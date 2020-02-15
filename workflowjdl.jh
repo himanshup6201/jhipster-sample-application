@@ -1,0 +1,20 @@
+entity AppUser {
+    Id Long
+	username String
+    password String
+    adminflag Boolean
+    deleteflag Boolean
+}
+
+entity Role {
+    Id Long
+	role String
+}
+relationship ManyToMany {
+	AppUser{role(Id)} to Role{appuser}
+}
+
+
+
+
+ 
