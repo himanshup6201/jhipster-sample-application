@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="appUser">
+            <h2><span>App User</span> {{ appUser.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Username</span></dt>
+                <dd>
+                    <span>{{ appUser.username }}</span>
+                </dd>
+                <dt><span>Password</span></dt>
+                <dd>
+                    <span>{{ appUser.password }}</span>
+                </dd>
+                <dt><span>Adminflag</span></dt>
+                <dd>
+                    <span>{{ appUser.adminflag }}</span>
+                </dd>
+                <dt><span>Deleteflag</span></dt>
+                <dd>
+                    <span>{{ appUser.deleteflag }}</span>
+                </dd>
+                <dt><span>Role</span></dt>
+                <dd>
+                    <span *ngFor="let role of appUser.roles; let last = last">
+                        <a [routerLink]="['/role', role?.id, 'view']">{{ role.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/app-user', appUser.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
